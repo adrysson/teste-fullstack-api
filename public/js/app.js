@@ -2236,9 +2236,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     edit: function edit(id) {
-      this.forms.edit.body = this.services.data.find(function (service) {
+      var service = this.services.data.find(function (service) {
         return service.id === id;
       });
+      this.forms.edit.body = Object.assign({}, service);
       $(this.$refs.service_edit_modal).modal('show');
     },
     update: function update(id) {

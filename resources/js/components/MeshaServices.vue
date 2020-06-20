@@ -211,9 +211,10 @@ export default {
       }
     },
     edit(id) {
-      this.forms.edit.body = this.services.data.find(function(service) {
+      const service = this.services.data.find(function(service) {
         return service.id === id;
       });
+      this.forms.edit.body = Object.assign({}, service);
       $(this.$refs.service_edit_modal).modal('show');
     },
     async update(id) {
