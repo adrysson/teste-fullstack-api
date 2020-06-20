@@ -12,7 +12,7 @@
         v-if="services.data && services.data.length"
         class="table card-body"
       >
-        <thead>
+        <thead class="text-center">
           <th>Nome</th>
           <th>Ações</th>
         </thead>
@@ -21,7 +21,7 @@
             <td>
               {{ service.name }}
             </td>
-            <td>
+            <td class="text-center">
               <button
                 type="button"
                 class="btn btn-primary"
@@ -94,7 +94,16 @@
                 Cancelar
               </button>
               <button type="submit" class="btn btn-success">
-                Salvar
+                <div class="d-flex">
+                  <div
+                    v-if="forms.create.loading"
+                    class="spinner-border text-white spinner-border-sm mr-1"
+                    role="status"
+                  >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div>Salvar</div>
+                </div>
               </button>
             </div>
           </form>
@@ -151,7 +160,16 @@
                 Cancelar
               </button>
               <button type="submit" class="btn btn-success">
-                Salvar
+                <div class="d-flex">
+                  <div
+                    v-if="forms.edit.loading"
+                    class="spinner-border text-white spinner-border-sm mr-1"
+                    role="status"
+                  >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <div>Salvar</div>
+                </div>
               </button>
             </div>
           </form>
@@ -165,9 +183,9 @@
 export default {
   data() {
     return {
-      loading: false,
       forms: {
         create: {
+          loading: false,
           body: {
             name: ''
           },
@@ -175,6 +193,7 @@ export default {
         },
         edit: {
           body: {
+            loading: false,
             id: '',
             name: ''
           },
@@ -219,6 +238,7 @@ export default {
     },
     async update(id) {
       try {
+        this.forms.edit.loading = true;
         this.forms.edit.errors = {};
         const response = await axios.put(
           `api/v1/services/${id}`,
@@ -228,6 +248,8 @@ export default {
         $(this.$refs.service_edit_modal).modal('hide');
       } catch (error) {
         this.forms.edit.errors = error.response.data.errors;
+      } finally {
+        this.forms.edit.loading = false;
       }
     },
     async destroy(id) {
