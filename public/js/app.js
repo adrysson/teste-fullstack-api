@@ -1944,6 +1944,79 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeshaFormErrors.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MeshaFormErrors.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    errors: {
+      type: Array,
+      required: false,
+      "default": []
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeshaModalFooter.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MeshaModalFooter.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    loading: {
+      type: Boolean,
+      required: false,
+      "default": false
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeshaServices.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MeshaServices.vue?vue&type=script&lang=js& ***!
@@ -2078,58 +2151,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      loading: false,
       forms: {
         create: {
+          loading: false,
           body: {
             name: ''
           },
@@ -2137,6 +2164,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         },
         edit: {
           body: {
+            loading: false,
             id: '',
             name: ''
           },
@@ -2209,30 +2237,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
+                _this3.forms.create.loading = true;
                 _this3.forms.create.errors = {};
-                _context3.next = 4;
+                _context3.next = 5;
                 return axios.post('api/v1/services', _this3.forms.create.body);
 
-              case 4:
+              case 5:
                 response = _context3.sent;
 
                 _this3.index();
 
                 $(_this3.$refs.service_modal).modal('hide');
-                _context3.next = 12;
+                _context3.next = 13;
                 break;
 
-              case 9:
-                _context3.prev = 9;
+              case 10:
+                _context3.prev = 10;
                 _context3.t0 = _context3["catch"](0);
                 _this3.forms.create.errors = _context3.t0.response.data.errors;
 
-              case 12:
+              case 13:
+                _context3.prev = 13;
+                _this3.forms.create.loading = false;
+                return _context3.finish(13);
+
+              case 16:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 9]]);
+        }, _callee3, null, [[0, 10, 13, 16]]);
       }))();
     },
     edit: function edit(id) {
@@ -2252,30 +2286,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.prev = 0;
+                _this4.forms.edit.loading = true;
                 _this4.forms.edit.errors = {};
-                _context4.next = 4;
+                _context4.next = 5;
                 return axios.put("api/v1/services/".concat(id), _this4.forms.edit.body);
 
-              case 4:
+              case 5:
                 response = _context4.sent;
 
                 _this4.index();
 
                 $(_this4.$refs.service_edit_modal).modal('hide');
-                _context4.next = 12;
+                _context4.next = 13;
                 break;
 
-              case 9:
-                _context4.prev = 9;
+              case 10:
+                _context4.prev = 10;
                 _context4.t0 = _context4["catch"](0);
                 _this4.forms.edit.errors = _context4.t0.response.data.errors;
 
-              case 12:
+              case 13:
+                _context4.prev = 13;
+                _this4.forms.edit.loading = false;
+                return _context4.finish(13);
+
+              case 16:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 9]]);
+        }, _callee4, null, [[0, 10, 13, 16]]);
       }))();
     },
     destroy: function destroy(id) {
@@ -38637,6 +38677,151 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeshaFormErrors.vue?vue&type=template&id=d8d35930&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MeshaFormErrors.vue?vue&type=template&id=d8d35930& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.errors
+    ? _c(
+        "div",
+        { staticClass: "text-danger" },
+        _vm._l(_vm.errors, function(error, key) {
+          return _c("div", { key: "error-name-" + key }, [
+            _vm._v("\n    " + _vm._s(error) + "\n  ")
+          ])
+        }),
+        0
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeshaModalFooter.vue?vue&type=template&id=37a68a5f&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MeshaModalFooter.vue?vue&type=template&id=37a68a5f& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "modal-footer d-flex justify-content-between" },
+    [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("\n    Cancelar\n  ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [
+          _c("div", { staticClass: "d-flex" }, [
+            _vm.loading
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "spinner-border text-white spinner-border-sm mr-1",
+                    attrs: { role: "status" }
+                  },
+                  [
+                    _c("span", { staticClass: "sr-only" }, [
+                      _vm._v("Loading...")
+                    ])
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c("div", [_vm._v("Salvar")])
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeshaModalHeader.vue?vue&type=template&id=58d8ee51&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MeshaModalHeader.vue?vue&type=template&id=58d8ee51& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal-header" }, [
+    _c("h5", { staticClass: "modal-title" }, [_vm._t("default")], 2),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          required: "",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeshaServices.vue?vue&type=template&id=31b16992&":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MeshaServices.vue?vue&type=template&id=31b16992& ***!
@@ -38686,7 +38871,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("td", [
+                  _c("td", { staticClass: "text-center" }, [
                     _c(
                       "button",
                       {
@@ -38737,83 +38922,80 @@ var render = function() {
           "div",
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.store()
+            _c(
+              "div",
+              { staticClass: "modal-content" },
+              [
+                _c("mesha-modal-header", [_vm._v("Cadastrar serviço")]),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.store()
+                      }
                     }
-                  }
-                },
-                [
-                  _c("div", { staticClass: "modal-body" }, [
-                    _c("div", { staticClass: "form-group" }, [
+                  },
+                  [
+                    _c("div", { staticClass: "modal-body" }, [
                       _c(
-                        "label",
-                        {
-                          staticClass: "col-form-label",
-                          attrs: { for: "name" }
-                        },
-                        [_vm._v("Nome")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.forms.create.body.name,
-                            expression: "forms.create.body.name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { required: "", type: "text" },
-                        domProps: { value: _vm.forms.create.body.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.forms.create.body,
-                              "name",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.forms.create.errors.name
-                        ? _c(
-                            "div",
-                            { staticClass: "text-danger" },
-                            _vm._l(_vm.forms.create.errors.name, function(
-                              error,
-                              key
-                            ) {
-                              return _c("div", { key: "error-name-" + key }, [
-                                _vm._v(
-                                  "\n                  " +
-                                    _vm._s(error) +
-                                    "\n                "
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "name" }
+                            },
+                            [_vm._v("Nome")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.forms.create.body.name,
+                                expression: "forms.create.body.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { required: "", type: "text" },
+                            domProps: { value: _vm.forms.create.body.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.forms.create.body,
+                                  "name",
+                                  $event.target.value
                                 )
-                              ])
-                            }),
-                            0
-                          )
-                        : _vm._e()
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(2)
-                ]
-              )
-            ])
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("mesha-form-errors", {
+                            attrs: { errors: _vm.forms.create.errors.name }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("mesha-modal-footer", {
+                      attrs: { loading: _vm.forms.create.loading }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            )
           ]
         )
       ]
@@ -38831,87 +39013,80 @@ var render = function() {
           "div",
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.update(_vm.forms.edit.body.id)
+            _c(
+              "div",
+              { staticClass: "modal-content" },
+              [
+                _c("mesha-modal-header", [_vm._v("Editar serviço")]),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.update(_vm.forms.edit.body.id)
+                      }
                     }
-                  }
-                },
-                [
-                  _c("div", { staticClass: "modal-body" }, [
-                    _c("div", { staticClass: "form-group" }, [
+                  },
+                  [
+                    _c("div", { staticClass: "modal-body" }, [
                       _c(
-                        "label",
-                        {
-                          staticClass: "col-form-label",
-                          attrs: { for: "name" }
-                        },
-                        [_vm._v("Nome")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.forms.edit.body.name,
-                            expression: "forms.edit.body.name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { required: "", type: "text" },
-                        domProps: { value: _vm.forms.edit.body.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-form-label",
+                              attrs: { for: "name" }
+                            },
+                            [_vm._v("Nome")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.forms.edit.body.name,
+                                expression: "forms.edit.body.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { required: "", type: "text" },
+                            domProps: { value: _vm.forms.edit.body.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.forms.edit.body,
+                                  "name",
+                                  $event.target.value
+                                )
+                              }
                             }
-                            _vm.$set(
-                              _vm.forms.edit.body,
-                              "name",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.forms.edit.errors.name
-                        ? _c(
-                            "div",
-                            { staticClass: "text-danger" },
-                            _vm._l(_vm.forms.edit.errors.name, function(
-                              error,
-                              key
-                            ) {
-                              return _c(
-                                "div",
-                                { key: "error-edit-name-" + key },
-                                [
-                                  _vm._v(
-                                    "\n                  " +
-                                      _vm._s(error) +
-                                      "\n                "
-                                  )
-                                ]
-                              )
-                            }),
-                            0
-                          )
-                        : _vm._e()
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(4)
-                ]
-              )
-            ])
+                          }),
+                          _vm._v(" "),
+                          _c("mesha-form-errors", {
+                            attrs: { errors: _vm.forms.edit.errors.name }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("mesha-modal-footer", {
+                      attrs: { loading: _vm.forms.edit.loading }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            )
           ]
         )
       ]
@@ -38923,105 +39098,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
+    return _c("thead", { staticClass: "text-center" }, [
       _c("th", [_vm._v("Nome")]),
       _vm._v(" "),
       _c("th", [_vm._v("Ações")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c("h5", { staticClass: "modal-title" }, [_vm._v("Cadastrar serviço")]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            required: "",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "modal-footer d-flex justify-content-between" },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary",
-            attrs: { type: "button", "data-dismiss": "modal" }
-          },
-          [_vm._v("\n              Cancelar\n            ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-success", attrs: { type: "submit" } },
-          [_vm._v("\n              Salvar\n            ")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c("h5", { staticClass: "modal-title" }, [_vm._v("Editar serviço")]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            required: "",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "modal-footer d-flex justify-content-between" },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-secondary",
-            attrs: { type: "button", "data-dismiss": "modal" }
-          },
-          [_vm._v("\n              Cancelar\n            ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-success", attrs: { type: "submit" } },
-          [_vm._v("\n              Salvar\n            ")]
-        )
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -51219,6 +51300,9 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('mesha-clients', __webpack_require__(/*! ./components/MeshaClients.vue */ "./resources/js/components/MeshaClients.vue")["default"]);
 Vue.component('mesha-services', __webpack_require__(/*! ./components/MeshaServices.vue */ "./resources/js/components/MeshaServices.vue")["default"]);
+Vue.component('mesha-modal-header', __webpack_require__(/*! ./components/MeshaModalHeader.vue */ "./resources/js/components/MeshaModalHeader.vue")["default"]);
+Vue.component('mesha-modal-footer', __webpack_require__(/*! ./components/MeshaModalFooter.vue */ "./resources/js/components/MeshaModalFooter.vue")["default"]);
+Vue.component('mesha-form-errors', __webpack_require__(/*! ./components/MeshaFormErrors.vue */ "./resources/js/components/MeshaFormErrors.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -51340,6 +51424,197 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaClients_vue_vue_type_template_id_ec82bd82___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaClients_vue_vue_type_template_id_ec82bd82___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/MeshaFormErrors.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/MeshaFormErrors.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MeshaFormErrors_vue_vue_type_template_id_d8d35930___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MeshaFormErrors.vue?vue&type=template&id=d8d35930& */ "./resources/js/components/MeshaFormErrors.vue?vue&type=template&id=d8d35930&");
+/* harmony import */ var _MeshaFormErrors_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MeshaFormErrors.vue?vue&type=script&lang=js& */ "./resources/js/components/MeshaFormErrors.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _MeshaFormErrors_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MeshaFormErrors_vue_vue_type_template_id_d8d35930___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MeshaFormErrors_vue_vue_type_template_id_d8d35930___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MeshaFormErrors.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MeshaFormErrors.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/MeshaFormErrors.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaFormErrors_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MeshaFormErrors.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeshaFormErrors.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaFormErrors_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/MeshaFormErrors.vue?vue&type=template&id=d8d35930&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/MeshaFormErrors.vue?vue&type=template&id=d8d35930& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaFormErrors_vue_vue_type_template_id_d8d35930___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MeshaFormErrors.vue?vue&type=template&id=d8d35930& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeshaFormErrors.vue?vue&type=template&id=d8d35930&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaFormErrors_vue_vue_type_template_id_d8d35930___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaFormErrors_vue_vue_type_template_id_d8d35930___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/MeshaModalFooter.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/MeshaModalFooter.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MeshaModalFooter_vue_vue_type_template_id_37a68a5f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MeshaModalFooter.vue?vue&type=template&id=37a68a5f& */ "./resources/js/components/MeshaModalFooter.vue?vue&type=template&id=37a68a5f&");
+/* harmony import */ var _MeshaModalFooter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MeshaModalFooter.vue?vue&type=script&lang=js& */ "./resources/js/components/MeshaModalFooter.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _MeshaModalFooter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MeshaModalFooter_vue_vue_type_template_id_37a68a5f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MeshaModalFooter_vue_vue_type_template_id_37a68a5f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MeshaModalFooter.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MeshaModalFooter.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/MeshaModalFooter.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaModalFooter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MeshaModalFooter.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeshaModalFooter.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaModalFooter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/MeshaModalFooter.vue?vue&type=template&id=37a68a5f&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/MeshaModalFooter.vue?vue&type=template&id=37a68a5f& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaModalFooter_vue_vue_type_template_id_37a68a5f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MeshaModalFooter.vue?vue&type=template&id=37a68a5f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeshaModalFooter.vue?vue&type=template&id=37a68a5f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaModalFooter_vue_vue_type_template_id_37a68a5f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaModalFooter_vue_vue_type_template_id_37a68a5f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/MeshaModalHeader.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/MeshaModalHeader.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MeshaModalHeader_vue_vue_type_template_id_58d8ee51___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MeshaModalHeader.vue?vue&type=template&id=58d8ee51& */ "./resources/js/components/MeshaModalHeader.vue?vue&type=template&id=58d8ee51&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _MeshaModalHeader_vue_vue_type_template_id_58d8ee51___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MeshaModalHeader_vue_vue_type_template_id_58d8ee51___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MeshaModalHeader.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MeshaModalHeader.vue?vue&type=template&id=58d8ee51&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/MeshaModalHeader.vue?vue&type=template&id=58d8ee51& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaModalHeader_vue_vue_type_template_id_58d8ee51___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MeshaModalHeader.vue?vue&type=template&id=58d8ee51& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MeshaModalHeader.vue?vue&type=template&id=58d8ee51&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaModalHeader_vue_vue_type_template_id_58d8ee51___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MeshaModalHeader_vue_vue_type_template_id_58d8ee51___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

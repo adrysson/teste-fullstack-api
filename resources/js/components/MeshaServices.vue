@@ -44,6 +44,7 @@
         <p>Não há serviços cadastrados</p>
       </div>
     </div>
+    <!-- Modal de cadastro de serviço -->
     <div
       id="service-modal"
       ref="service_modal"
@@ -53,18 +54,7 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Cadastrar serviço</h5>
-            <button
-              type="button"
-              class="close"
-              required
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+          <mesha-modal-header>Cadastrar serviço</mesha-modal-header>
           <form @submit.prevent="store()">
             <div class="modal-body">
               <div class="form-group">
@@ -75,41 +65,20 @@
                   class="form-control"
                   v-model="forms.create.body.name"
                 />
-                <div class="text-danger" v-if="forms.create.errors.name">
-                  <div
-                    v-for="(error, key) in forms.create.errors.name"
-                    :key="`error-name-${key}`"
-                  >
-                    {{ error }}
-                  </div>
-                </div>
+                <mesha-form-errors
+                  :errors="forms.create.errors.name"
+                ></mesha-form-errors>
               </div>
             </div>
-            <div class="modal-footer d-flex justify-content-between">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Cancelar
-              </button>
-              <button type="submit" class="btn btn-success">
-                <div class="d-flex">
-                  <div
-                    v-if="forms.create.loading"
-                    class="spinner-border text-white spinner-border-sm mr-1"
-                    role="status"
-                  >
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                  <div>Salvar</div>
-                </div>
-              </button>
-            </div>
+            <mesha-modal-footer
+              :loading="forms.create.loading"
+            ></mesha-modal-footer>
           </form>
         </div>
       </div>
     </div>
+    <!-- Fim do modal de cadastro de serviço -->
+    <!-- Modal edição de serviço -->
     <div
       id="service-edit-modal"
       ref="service_edit_modal"
@@ -119,18 +88,7 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Editar serviço</h5>
-            <button
-              type="button"
-              class="close"
-              required
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+          <mesha-modal-header>Editar serviço</mesha-modal-header>
           <form @submit.prevent="update(forms.edit.body.id)">
             <div class="modal-body">
               <div class="form-group">
@@ -141,41 +99,19 @@
                   class="form-control"
                   v-model="forms.edit.body.name"
                 />
-                <div class="text-danger" v-if="forms.edit.errors.name">
-                  <div
-                    v-for="(error, key) in forms.edit.errors.name"
-                    :key="`error-edit-name-${key}`"
-                  >
-                    {{ error }}
-                  </div>
-                </div>
+                <mesha-form-errors
+                  :errors="forms.edit.errors.name"
+                ></mesha-form-errors>
               </div>
             </div>
-            <div class="modal-footer d-flex justify-content-between">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Cancelar
-              </button>
-              <button type="submit" class="btn btn-success">
-                <div class="d-flex">
-                  <div
-                    v-if="forms.edit.loading"
-                    class="spinner-border text-white spinner-border-sm mr-1"
-                    role="status"
-                  >
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                  <div>Salvar</div>
-                </div>
-              </button>
-            </div>
+            <mesha-modal-footer
+              :loading="forms.edit.loading"
+            ></mesha-modal-footer>
           </form>
         </div>
       </div>
     </div>
+    <!-- Fim do modal de edição de serviço -->
   </div>
 </template>
 
@@ -218,6 +154,7 @@ export default {
     },
     async store() {
       try {
+        this.forms.create.loading = true;
         this.forms.create.errors = {};
         const response = await axios.post(
           'api/v1/services',
@@ -227,6 +164,8 @@ export default {
         $(this.$refs.service_modal).modal('hide');
       } catch (error) {
         this.forms.create.errors = error.response.data.errors;
+      } finally {
+        this.forms.create.loading = false;
       }
     },
     edit(id) {
