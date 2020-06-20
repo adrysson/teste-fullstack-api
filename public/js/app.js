@@ -2063,6 +2063,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2082,35 +2088,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.prev = 0;
-              _context.next = 3;
-              return axios.get('api/v1/services');
+              _this.index();
 
-            case 3:
-              response = _context.sent;
-              _this.services = response.data;
-              _context.next = 9;
-              break;
-
-            case 7:
-              _context.prev = 7;
-              _context.t0 = _context["catch"](0);
-
-            case 9:
+            case 1:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 7]]);
+      }, _callee);
     }))();
   },
   methods: {
-    store: function store() {
+    index: function index() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
@@ -2120,26 +2113,61 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
-                _this2.forms.create.errors = {};
-                _context2.next = 4;
-                return axios.post('api/v1/services', _this2.forms.create.body);
+                _context2.next = 3;
+                return axios.get('api/v1/services');
 
-              case 4:
+              case 3:
                 response = _context2.sent;
-                _context2.next = 10;
+                _this2.services = response.data;
+                _context2.next = 9;
                 break;
 
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                _this2.forms.create.errors = _context2.t0.response.data.errors;
 
-              case 10:
+              case 9:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2, null, [[0, 7]]);
+      }))();
+    },
+    store: function store() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _this3.forms.create.errors = {};
+                _context3.next = 4;
+                return axios.post('api/v1/services', _this3.forms.create.body);
+
+              case 4:
+                response = _context3.sent;
+
+                _this3.index();
+
+                $(_this3.$refs.servico_modal).modal('hide');
+                _context3.next = 12;
+                break;
+
+              case 9:
+                _context3.prev = 9;
+                _context3.t0 = _context3["catch"](0);
+                _this3.forms.create.errors = _context3.t0.response.data.errors;
+
+              case 12:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 9]]);
       }))();
     }
   }
@@ -38481,36 +38509,35 @@ var render = function() {
     _c("div", { staticClass: "card" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _vm.services.data && _vm.services.data.length
-          ? _c("table", { staticClass: "table" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.services.data, function(service, key) {
-                  return _c("tr", { key: "service-" + key }, [
-                    _c("td", [
-                      _vm._v(
-                        "\n              " +
-                          _vm._s(service.name) +
-                          "\n            "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(2, true)
-                  ])
-                }),
-                0
-              )
-            ])
-          : _c("div", [_vm._v("Não há serviços cadastrados")])
-      ])
+      _vm.services.data && _vm.services.data.length
+        ? _c("table", { staticClass: "table card-body" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.services.data, function(service, key) {
+                return _c("tr", { key: "service-" + key }, [
+                  _c("td", [
+                    _vm._v(
+                      "\n            " + _vm._s(service.name) + "\n          "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2, true)
+                ])
+              }),
+              0
+            )
+          ])
+        : _c("div", { staticClass: "card-body" }, [
+            _c("p", [_vm._v("Não há serviços cadastrados")])
+          ])
     ]),
     _vm._v(" "),
     _c(
       "div",
       {
+        ref: "servico_modal",
         staticClass: "modal fade",
         attrs: { id: "servico-modal", tabindex: "-1", role: "dialog" }
       },
@@ -38653,13 +38680,13 @@ var staticRenderFns = [
             "data-target": "#servico-editar-modal"
           }
         },
-        [_vm._v("\n                Editar\n              ")]
+        [_vm._v("\n              Editar\n            ")]
       ),
       _vm._v(" "),
       _c(
         "button",
         { staticClass: "btn btn-danger", attrs: { type: "button" } },
-        [_vm._v("\n                Excluir\n              ")]
+        [_vm._v("\n              Excluir\n            ")]
       )
     ])
   },

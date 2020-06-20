@@ -13,40 +13,46 @@
         </button>
       </div>
 
-      <div class="card-body">
-        <table v-if="services.data && services.data.length" class="table">
-          <thead>
-            <th>Nome</th>
-            <th>Ações</th>
-          </thead>
-          <tbody>
-            <tr v-for="(service, key) in services.data" :key="`service-${key}`">
-              <td>
-                {{ service.name }}
-              </td>
-              <td>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-toggle="modal"
-                  data-target="#servico-editar-modal"
-                >
-                  Editar
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                >
-                  Excluir
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div v-else>Não há serviços cadastrados</div>
+      <table
+        v-if="services.data && services.data.length"
+        class="table card-body"
+      >
+        <thead>
+          <th>Nome</th>
+          <th>Ações</th>
+        </thead>
+        <tbody>
+          <tr v-for="(service, key) in services.data" :key="`service-${key}`">
+            <td>
+              {{ service.name }}
+            </td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#servico-editar-modal"
+              >
+                Editar
+              </button>
+              <button type="button" class="btn btn-danger">
+                Excluir
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="card-body" v-else>
+        <p>Não há serviços cadastrados</p>
       </div>
     </div>
-    <div id="servico-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div
+      id="servico-modal"
+      ref="servico_modal"
+      class="modal fade"
+      tabindex="-1"
+      role="dialog"
+    >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -117,12 +123,15 @@ export default {
     };
   },
   async created() {
-    try {
-      const response = await axios.get('api/v1/services');
-      this.services = response.data;
-    } catch (error) {}
+    this.index();
   },
   methods: {
+    async index() {
+      try {
+        const response = await axios.get('api/v1/services');
+        this.services = response.data;
+      } catch (error) {}
+    },
     async store() {
       try {
         this.forms.create.errors = {};
@@ -130,6 +139,8 @@ export default {
           'api/v1/services',
           this.forms.create.body
         );
+        this.index();
+        $(this.$refs.servico_modal).modal('hide');
       } catch (error) {
         this.forms.create.errors = error.response.data.errors;
       }
