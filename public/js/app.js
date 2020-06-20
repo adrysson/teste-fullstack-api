@@ -2069,6 +2069,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2168,6 +2172,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee3, null, [[0, 9]]);
+      }))();
+    },
+    destroy: function destroy(id) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                if (!confirm('Tem certeza que deseja apagar o serviço?')) {
+                  _context4.next = 11;
+                  break;
+                }
+
+                _context4.prev = 1;
+                _context4.next = 4;
+                return axios["delete"]("api/v1/services/".concat(id));
+
+              case 4:
+                response = _context4.sent;
+
+                _this4.index();
+
+                _context4.next = 11;
+                break;
+
+              case 8:
+                _context4.prev = 8;
+                _context4.t0 = _context4["catch"](1);
+                _this4.forms.create.errors = _context4.t0.response.data.errors;
+
+              case 11:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[1, 8]]);
       }))();
     }
   }
@@ -38523,7 +38566,34 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(2, true)
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#servico-editar-modal"
+                        }
+                      },
+                      [_vm._v("\n              Editar\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.destroy(service.id)
+                          }
+                        }
+                      },
+                      [_vm._v("\n              Excluir\n            ")]
+                    )
+                  ])
                 ])
               }),
               0
@@ -38547,7 +38617,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c(
                 "form",
@@ -38619,7 +38689,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(4)
+                  _vm._m(3)
                 ]
               )
             ])
@@ -38663,31 +38733,6 @@ var staticRenderFns = [
       _c("th", [_vm._v("Nome")]),
       _vm._v(" "),
       _c("th", [_vm._v("Ações")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: {
-            type: "button",
-            "data-toggle": "modal",
-            "data-target": "#servico-editar-modal"
-          }
-        },
-        [_vm._v("\n              Editar\n            ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-danger", attrs: { type: "button" } },
-        [_vm._v("\n              Excluir\n            ")]
-      )
     ])
   },
   function() {

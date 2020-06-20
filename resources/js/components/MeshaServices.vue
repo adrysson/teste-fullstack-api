@@ -35,7 +35,11 @@
               >
                 Editar
               </button>
-              <button type="button" class="btn btn-danger">
+              <button
+                type="button"
+                @click="destroy(service.id)"
+                class="btn btn-danger"
+              >
                 Excluir
               </button>
             </td>
@@ -143,6 +147,16 @@ export default {
         $(this.$refs.servico_modal).modal('hide');
       } catch (error) {
         this.forms.create.errors = error.response.data.errors;
+      }
+    },
+    async destroy(id) {
+      if (confirm('Tem certeza que deseja apagar o serviço?')) {
+        try {
+          const response = await axios.delete(`api/v1/services/${id}`);
+          this.index();
+        } catch (error) {
+          this.forms.create.errors = error.response.data.errors;
+        }
       }
     }
   }
