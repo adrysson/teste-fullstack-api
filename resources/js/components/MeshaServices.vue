@@ -3,12 +3,7 @@
     <div class="card">
       <div class="card-header d-flex justify-content-between">
         <h5>Serviços</h5>
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-toggle="modal"
-          data-target="#servico-modal"
-        >
+        <button type="button" class="btn btn-primary" @click="create()">
           Cadastrar
         </button>
       </div>
@@ -30,8 +25,7 @@
               <button
                 type="button"
                 class="btn btn-primary"
-                data-toggle="modal"
-                data-target="#servico-editar-modal"
+                @click="edit(service.id)"
               >
                 Editar
               </button>
@@ -51,8 +45,8 @@
       </div>
     </div>
     <div
-      id="servico-modal"
-      ref="servico_modal"
+      id="service-modal"
+      ref="service_modal"
       class="modal fade"
       tabindex="-1"
       role="dialog"
@@ -107,6 +101,63 @@
         </div>
       </div>
     </div>
+    <div
+      id="service-edit-modal"
+      ref="service_edit_modal"
+      class="modal fade"
+      tabindex="-1"
+      role="dialog"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Editar serviço</h5>
+            <button
+              type="button"
+              class="close"
+              required
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form @submit.prevent="update(forms.edit.body.id)">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="name" class="col-form-label">Nome</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  v-model="forms.edit.body.name"
+                />
+                <div class="text-danger" v-if="forms.edit.errors.name">
+                  <div
+                    v-for="(error, key) in forms.edit.errors.name"
+                    :key="`error-edit-name-${key}`"
+                  >
+                    {{ error }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Cancelar
+              </button>
+              <button type="submit" class="btn btn-success">
+                Salvar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -118,6 +169,13 @@ export default {
       forms: {
         create: {
           body: {
+            name: ''
+          },
+          errors: {}
+        },
+        edit: {
+          body: {
+            id: '',
             name: ''
           },
           errors: {}
@@ -136,6 +194,9 @@ export default {
         this.services = response.data;
       } catch (error) {}
     },
+    create() {
+      $(this.$refs.service_modal).modal('show');
+    },
     async store() {
       try {
         this.forms.create.errors = {};
@@ -144,9 +205,28 @@ export default {
           this.forms.create.body
         );
         this.index();
-        $(this.$refs.servico_modal).modal('hide');
+        $(this.$refs.service_modal).modal('hide');
       } catch (error) {
         this.forms.create.errors = error.response.data.errors;
+      }
+    },
+    edit(id) {
+      this.forms.edit.body = this.services.data.find(function(service) {
+        return service.id === id;
+      });
+      $(this.$refs.service_edit_modal).modal('show');
+    },
+    async update(id) {
+      try {
+        this.forms.edit.errors = {};
+        const response = await axios.put(
+          `api/v1/services/${id}`,
+          this.forms.edit.body
+        );
+        this.index();
+        $(this.$refs.service_edit_modal).modal('hide');
+      } catch (error) {
+        this.forms.edit.errors = error.response.data.errors;
       }
     },
     async destroy(id) {

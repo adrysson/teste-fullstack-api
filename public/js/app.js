@@ -2073,6 +2073,57 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2080,6 +2131,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       forms: {
         create: {
           body: {
+            name: ''
+          },
+          errors: {}
+        },
+        edit: {
+          body: {
+            id: '',
             name: ''
           },
           errors: {}
@@ -2138,6 +2196,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2, null, [[0, 7]]);
       }))();
     },
+    create: function create() {
+      $(this.$refs.service_modal).modal('show');
+    },
     store: function store() {
       var _this3 = this;
 
@@ -2157,7 +2218,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this3.index();
 
-                $(_this3.$refs.servico_modal).modal('hide');
+                $(_this3.$refs.service_modal).modal('hide');
                 _context3.next = 12;
                 break;
 
@@ -2174,7 +2235,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3, null, [[0, 9]]);
       }))();
     },
-    destroy: function destroy(id) {
+    edit: function edit(id) {
+      this.forms.edit.body = this.services.data.find(function (service) {
+        return service.id === id;
+      });
+      $(this.$refs.service_edit_modal).modal('show');
+    },
+    update: function update(id) {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
@@ -2183,34 +2250,70 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                if (!confirm('Tem certeza que deseja apagar o serviço?')) {
-                  _context4.next = 11;
-                  break;
-                }
-
-                _context4.prev = 1;
+                _context4.prev = 0;
+                _this4.forms.edit.errors = {};
                 _context4.next = 4;
-                return axios["delete"]("api/v1/services/".concat(id));
+                return axios.put("api/v1/services/".concat(id), _this4.forms.edit.body);
 
               case 4:
                 response = _context4.sent;
 
                 _this4.index();
 
-                _context4.next = 11;
+                $(_this4.$refs.service_edit_modal).modal('hide');
+                _context4.next = 12;
                 break;
 
-              case 8:
-                _context4.prev = 8;
-                _context4.t0 = _context4["catch"](1);
-                _this4.forms.create.errors = _context4.t0.response.data.errors;
+              case 9:
+                _context4.prev = 9;
+                _context4.t0 = _context4["catch"](0);
+                _this4.forms.edit.errors = _context4.t0.response.data.errors;
 
-              case 11:
+              case 12:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[1, 8]]);
+        }, _callee4, null, [[0, 9]]);
+      }))();
+    },
+    destroy: function destroy(id) {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                if (!confirm('Tem certeza que deseja apagar o serviço?')) {
+                  _context5.next = 11;
+                  break;
+                }
+
+                _context5.prev = 1;
+                _context5.next = 4;
+                return axios["delete"]("api/v1/services/".concat(id));
+
+              case 4:
+                response = _context5.sent;
+
+                _this5.index();
+
+                _context5.next = 11;
+                break;
+
+              case 8:
+                _context5.prev = 8;
+                _context5.t0 = _context5["catch"](1);
+                _this5.forms.create.errors = _context5.t0.response.data.errors;
+
+              case 11:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[1, 8]]);
       }))();
     }
   }
@@ -38550,11 +38653,27 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "card" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "card-header d-flex justify-content-between" }, [
+        _c("h5", [_vm._v("Serviços")]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.create()
+              }
+            }
+          },
+          [_vm._v("\n        Cadastrar\n      ")]
+        )
+      ]),
       _vm._v(" "),
       _vm.services.data && _vm.services.data.length
         ? _c("table", { staticClass: "table card-body" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
@@ -38571,10 +38690,11 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary",
-                        attrs: {
-                          type: "button",
-                          "data-toggle": "modal",
-                          "data-target": "#servico-editar-modal"
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.edit(service.id)
+                          }
                         }
                       },
                       [_vm._v("\n              Editar\n            ")]
@@ -38607,9 +38727,9 @@ var render = function() {
     _c(
       "div",
       {
-        ref: "servico_modal",
+        ref: "service_modal",
         staticClass: "modal fade",
-        attrs: { id: "servico-modal", tabindex: "-1", role: "dialog" }
+        attrs: { id: "service-modal", tabindex: "-1", role: "dialog" }
       },
       [
         _c(
@@ -38617,7 +38737,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(2),
+              _vm._m(1),
               _vm._v(" "),
               _c(
                 "form",
@@ -38689,7 +38809,105 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(2)
+                ]
+              )
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        ref: "service_edit_modal",
+        staticClass: "modal fade",
+        attrs: { id: "service-edit-modal", tabindex: "-1", role: "dialog" }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.update(_vm.forms.edit.body.id)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-form-label",
+                          attrs: { for: "name" }
+                        },
+                        [_vm._v("Nome")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.forms.edit.body.name,
+                            expression: "forms.edit.body.name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { required: "", type: "text" },
+                        domProps: { value: _vm.forms.edit.body.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.forms.edit.body,
+                              "name",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.forms.edit.errors.name
+                        ? _c(
+                            "div",
+                            { staticClass: "text-danger" },
+                            _vm._l(_vm.forms.edit.errors.name, function(
+                              error,
+                              key
+                            ) {
+                              return _c(
+                                "div",
+                                { key: "error-edit-name-" + key },
+                                [
+                                  _vm._v(
+                                    "\n                  " +
+                                      _vm._s(error) +
+                                      "\n                "
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(4)
                 ]
               )
             ])
@@ -38700,31 +38918,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header d-flex justify-content-between" },
-      [
-        _c("h5", [_vm._v("Serviços")]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary",
-            attrs: {
-              type: "button",
-              "data-toggle": "modal",
-              "data-target": "#servico-modal"
-            }
-          },
-          [_vm._v("\n        Cadastrar\n      ")]
-        )
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -38741,6 +38934,53 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c("h5", { staticClass: "modal-title" }, [_vm._v("Cadastrar serviço")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            required: "",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal-footer d-flex justify-content-between" },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("\n              Cancelar\n            ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-success", attrs: { type: "submit" } },
+          [_vm._v("\n              Salvar\n            ")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title" }, [_vm._v("Editar serviço")]),
       _vm._v(" "),
       _c(
         "button",
