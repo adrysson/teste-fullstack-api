@@ -19,5 +19,5 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Api\V1', 'prefix' => 'api/v1'], function () {
-    Route::apiResource('services', 'ServiceController');
+    Route::apiResource('services', 'ServiceController')->except('show');
 });
