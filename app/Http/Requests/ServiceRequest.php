@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ServiceRequest extends FormRequest
 {
@@ -24,7 +26,12 @@ class ServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
+            'name' => [
+                'required',
+                Rule::unique('services')->where(function (Builder $query) {
+                    return $query->where('user_id', auth()->user()->id);
+                }),
+            ],
         ];
     }
 }
