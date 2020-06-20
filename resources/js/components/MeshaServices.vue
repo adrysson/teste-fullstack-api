@@ -143,15 +143,16 @@ export default {
     this.index();
   },
   methods: {
+    // Busca lista de serviços
     async index() {
-      try {
-        const response = await axios.get('api/v1/services');
-        this.services = response.data;
-      } catch (error) {}
+      const response = await axios.get('api/v1/services');
+      this.services = response.data;
     },
+    // Exibe modal de criação de serviço
     create() {
       $(this.$refs.service_modal).modal('show');
     },
+    // Cria serviço
     async store() {
       try {
         this.forms.create.loading = true;
@@ -168,6 +169,7 @@ export default {
         this.forms.create.loading = false;
       }
     },
+    // Exibe modal de edição de serviço
     edit(id) {
       const service = this.services.data.find(function(service) {
         return service.id === id;
@@ -175,6 +177,7 @@ export default {
       this.forms.edit.body = Object.assign({}, service);
       $(this.$refs.service_edit_modal).modal('show');
     },
+    // Atualiza um serviço
     async update(id) {
       try {
         this.forms.edit.loading = true;
@@ -191,14 +194,11 @@ export default {
         this.forms.edit.loading = false;
       }
     },
+    // Apaga um serviço
     async destroy(id) {
       if (confirm('Tem certeza que deseja apagar o serviço?')) {
-        try {
-          const response = await axios.delete(`api/v1/services/${id}`);
-          this.index();
-        } catch (error) {
-          this.forms.create.errors = error.response.data.errors;
-        }
+        const response = await axios.delete(`api/v1/services/${id}`);
+        this.index();
       }
     }
   }

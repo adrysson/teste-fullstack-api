@@ -2193,6 +2193,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }))();
   },
   methods: {
+    // Busca lista de serviços
     index: function index() {
       var _this2 = this;
 
@@ -2202,31 +2203,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
+                _context2.next = 2;
                 return axios.get('api/v1/services');
 
-              case 3:
+              case 2:
                 response = _context2.sent;
                 _this2.services = response.data;
-                _context2.next = 9;
-                break;
 
-              case 7:
-                _context2.prev = 7;
-                _context2.t0 = _context2["catch"](0);
-
-              case 9:
+              case 4:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 7]]);
+        }, _callee2);
       }))();
     },
+    // Exibe modal de criação de serviço
     create: function create() {
       $(this.$refs.service_modal).modal('show');
     },
+    // Cria serviço
     store: function store() {
       var _this3 = this;
 
@@ -2269,6 +2265,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3, null, [[0, 10, 13, 16]]);
       }))();
     },
+    // Exibe modal de edição de serviço
     edit: function edit(id) {
       var service = this.services.data.find(function (service) {
         return service.id === id;
@@ -2276,6 +2273,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.forms.edit.body = Object.assign({}, service);
       $(this.$refs.service_edit_modal).modal('show');
     },
+    // Atualiza um serviço
     update: function update(id) {
       var _this4 = this;
 
@@ -2318,6 +2316,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4, null, [[0, 10, 13, 16]]);
       }))();
     },
+    // Apaga um serviço
     destroy: function destroy(id) {
       var _this5 = this;
 
@@ -2328,33 +2327,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context5.prev = _context5.next) {
               case 0:
                 if (!confirm('Tem certeza que deseja apagar o serviço?')) {
-                  _context5.next = 11;
+                  _context5.next = 5;
                   break;
                 }
 
-                _context5.prev = 1;
-                _context5.next = 4;
+                _context5.next = 3;
                 return axios["delete"]("api/v1/services/".concat(id));
 
-              case 4:
+              case 3:
                 response = _context5.sent;
 
                 _this5.index();
 
-                _context5.next = 11;
-                break;
-
-              case 8:
-                _context5.prev = 8;
-                _context5.t0 = _context5["catch"](1);
-                _this5.forms.create.errors = _context5.t0.response.data.errors;
-
-              case 11:
+              case 5:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[1, 8]]);
+        }, _callee5);
       }))();
     }
   }
