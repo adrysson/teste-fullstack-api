@@ -4,11 +4,11 @@ FROM php:7.4.2-fpm-alpine3.10
 RUN apk add --no-cache openssl bash nodejs npm postgresql-dev
 
 # Install GD Dependencies
-RUN apk add --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
+RUN apk add --no-cache freetype-dev libpng-dev libjpeg-turbo-dev libzip-dev
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
 # Install php extensions
-RUN docker-php-ext-install -j "$(getconf _NPROCESSORS_ONLN)" pdo pgsql pdo_pgsql opcache exif gd
+RUN docker-php-ext-install -j "$(getconf _NPROCESSORS_ONLN)" pdo pgsql pdo_pgsql opcache exif gd zip
 
 # Install phpredis
 RUN apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS && pecl install redis && docker-php-ext-enable redis
