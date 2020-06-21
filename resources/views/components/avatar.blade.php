@@ -1,5 +1,5 @@
 @if(empty($user->getFirstMedia('avatar')))
-    <img {{ $attributes }} src="{{ asset('svg/user-default.svg') }}">
+    <img {{ $attributes }} src="{{ asset('svg/user-default.svg') }}" class="rounded-circle mr-2" width="40px">
 @else
-    {!! $user->getFirstMedia('avatar')->img('', $attributes->getIterator()->getArrayCopy()) !!}
+    <img src="{{ $user->getFirstMedia('avatar')->getUrl() }}" class="rounded-circle mr-2" width="40px">
 @endif
