@@ -6,10 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Ramsey\Uuid\Uuid;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use Notifiable;
+    use Notifiable, InteractsWithMedia;
 
     public $incrementing = false;
 
@@ -50,4 +52,12 @@ class User extends Authenticatable
         'id' => 'string',
         'email_verified_at' => 'datetime',
     ];
+
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('avatar')
+            ->withResponsiveImages()
+            ->singleFile();
+    }
 }

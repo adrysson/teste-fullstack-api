@@ -51,6 +51,10 @@ Vue.component(
   'mesha-services-form',
   require('./components/MeshaServicesForm.vue').default
 );
+Vue.component(
+  'mesha-profile-upload',
+  require('./components/MeshaProfileUpload.vue').default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
