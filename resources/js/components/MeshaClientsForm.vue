@@ -79,6 +79,11 @@ export default {
       }
     }
   },
+  watch: {
+    'form.body.id': (value) => {
+      console.log(value)
+    }
+  },
   created() {
     this.getServices();
   },

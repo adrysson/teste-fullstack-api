@@ -8,51 +8,51 @@
         </button>
       </div>
 
-      <table v-if="clients.data && clients.data.length" class="table card-body">
-        <thead class="text-center">
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Telefone</th>
-          <th>Serviços</th>
-          <th>Ações</th>
-        </thead>
-        <tbody>
-          <tr v-for="(client, key) in clients.data" :key="`client-${key}`">
-            <td>
-              {{ client.name }}
-            </td>
-            <td>
-              {{ client.email }}
-            </td>
-            <td>
-              {{ client.phone }}
-            </td>
-            <td>
-              {{ client.services_list }}
-            </td>
-            <td class="text-center">
-              <div class="d-flex">
-                <button
-                  type="button"
-                  class="btn btn-primary mr-1"
-                  @click="edit(client.id)"
-                >
-                  Editar
-                </button>
-                <button
-                  type="button"
-                  @click="destroy(client.id)"
-                  class="btn btn-danger"
-                >
-                  Excluir
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="card-body" v-else>
-        <p>Não há clientes cadastrados</p>
+      <div class="overflow-auto card-body">
+        <table v-if="clients.data && clients.data.length" class="table">
+          <thead class="text-center">
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Serviços</th>
+            <th>Ações</th>
+          </thead>
+          <tbody>
+            <tr v-for="(client, key) in clients.data" :key="`client-${key}`">
+              <td class="text-nowrap">
+                {{ client.name }}
+              </td>
+              <td>
+                {{ client.email }}
+              </td>
+              <td class="text-nowrap">
+                {{ client.phone }}
+              </td>
+              <td class="text-nowrap">
+                {{ client.services_list }}
+              </td>
+              <td class="text-center">
+                <div class="d-flex">
+                  <button
+                    type="button"
+                    class="btn btn-primary mr-1"
+                    @click="edit(client.id)"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    type="button"
+                    @click="destroy(client.id)"
+                    class="btn btn-danger"
+                  >
+                    Excluir
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p v-else>Não há clientes cadastrados</p>
       </div>
       <div class="card-footer" v-if="clients.last_page > 1">
         <mesha-pagination :data="clients"></mesha-pagination>

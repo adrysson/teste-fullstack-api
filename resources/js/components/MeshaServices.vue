@@ -8,40 +8,37 @@
         </button>
       </div>
 
-      <table
-        v-if="services.data && services.data.length"
-        class="table card-body"
-      >
-        <thead class="text-center">
-          <th>Nome</th>
-          <th>Ações</th>
-        </thead>
-        <tbody>
-          <tr v-for="(service, key) in services.data" :key="`service-${key}`">
-            <td>
-              {{ service.name }}
-            </td>
-            <td class="text-center">
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click="edit(service.id)"
-              >
-                Editar
-              </button>
-              <button
-                type="button"
-                @click="destroy(service.id)"
-                class="btn btn-danger"
-              >
-                Excluir
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="card-body" v-else>
-        <p>Não há serviços cadastrados</p>
+      <div class="card-body overflow-auto">
+        <table v-if="services.data && services.data.length" class="table">
+          <thead class="text-center">
+            <th>Nome</th>
+            <th>Ações</th>
+          </thead>
+          <tbody>
+            <tr v-for="(service, key) in services.data" :key="`service-${key}`">
+              <td>
+                {{ service.name }}
+              </td>
+              <td class="text-center">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  @click="edit(service.id)"
+                >
+                  Editar
+                </button>
+                <button
+                  type="button"
+                  @click="destroy(service.id)"
+                  class="btn btn-danger"
+                >
+                  Excluir
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p v-else>Não há serviços cadastrados</p>
       </div>
       <div class="card-footer" v-if="services.last_page > 1">
         <mesha-pagination :data="services"></mesha-pagination>
