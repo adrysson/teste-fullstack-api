@@ -21,6 +21,8 @@ class Contract extends Model
         'id' => 'string',
     ];
 
+    protected $fillable = ['client', 'term', 'pages'];
+
     public static function boot()
     {
         parent::boot();

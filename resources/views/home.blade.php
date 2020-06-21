@@ -14,5 +14,10 @@
             <mesha-services></mesha-services>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <mesha-contracts></mesha-contracts>
+        </div>
+    </div>
 </div>
 @endsection
