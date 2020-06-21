@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "croppie": "^2.6.5",
         "vue-select": "^3.10.3",
         "vue-the-mask": "^0.11.1"
     }
