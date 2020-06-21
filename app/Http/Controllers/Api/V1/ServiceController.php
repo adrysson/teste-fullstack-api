@@ -14,9 +14,16 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Service::orderBy('name')->paginate();
+        $services = Service::orderBy('name');
+
+        // Filtrando pelo nome
+        if ($request->query('name')) {
+            $services->where('name', 'ilike', '%' . $request->query('name') . '%');
+        }
+
+        return $services->paginate();
     }
 
     /**
