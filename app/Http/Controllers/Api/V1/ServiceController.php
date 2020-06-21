@@ -16,7 +16,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return Service::paginate();
+        return Service::orderBy('name')->paginate();
     }
 
     /**
