@@ -28,9 +28,12 @@ class ServiceRequest extends FormRequest
         return [
             'name' => [
                 'required',
-                Rule::unique('services')->where(function (Builder $query) {
-                    return $query->where('user_id', auth()->user()->id);
-                })->ignore($this->id ?? null),
+                'string',
+                Rule::unique('services')
+                    ->where(function (Builder $query) {
+                        return $query->where('user_id', auth()->user()->id);
+                    })
+                    ->ignore($this->id ?? null),
             ],
         ];
     }
