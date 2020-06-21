@@ -24,6 +24,7 @@ Vue.component('mesha-services', require('./components/MeshaServices.vue').defaul
 Vue.component('mesha-modal-header', require('./components/MeshaModalHeader.vue').default);
 Vue.component('mesha-modal-footer', require('./components/MeshaModalFooter.vue').default);
 Vue.component('mesha-form-errors', require('./components/MeshaFormErrors.vue').default);
+Vue.component('mesha-pagination', require('./components/MeshaPagination.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

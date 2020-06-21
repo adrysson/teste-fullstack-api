@@ -43,6 +43,7 @@
       <div class="card-body" v-else>
         <p>Não há serviços cadastrados</p>
       </div>
+      <mesha-pagination class="card-footer" :data="services"></mesha-pagination>
     </div>
     <!-- Modal de cadastro de serviço -->
     <div

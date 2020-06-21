@@ -1,9 +1,6 @@
 <template>
   <div class="text-danger" v-if="errors">
-    <div
-      v-for="(error, key) in errors"
-      :key="`error-name-${key}`"
-    >
+    <div v-for="(error, key) in errors" :key="`error-name-${key}`">
       {{ error }}
     </div>
   </div>
@@ -15,7 +12,9 @@ export default {
     errors: {
       type: Array,
       required: false,
-      default: []
+      default: () => {
+        return [];
+      }
     }
   }
 };
