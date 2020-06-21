@@ -54,7 +54,7 @@
         <mesha-pagination :data="clients"></mesha-pagination>
       </div>
     </div>
-    <!-- Modal de cadastro de serviço -->
+    <!-- Modal de cadastro de cliente -->
     <div
       id="client-modal"
       ref="client_modal"
@@ -64,15 +64,15 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <mesha-modal-header>Cadastrar serviço</mesha-modal-header>
+          <mesha-modal-header>Cadastrar cliente</mesha-modal-header>
           <form @submit.prevent="store()">
             <mesha-clients-form :form="forms.create"></mesha-clients-form>
           </form>
         </div>
       </div>
     </div>
-    <!-- Fim do modal de cadastro de serviço -->
-    <!-- Modal edição de serviço -->
+    <!-- Fim do modal de cadastro de cliente -->
+    <!-- Modal edição de cliente -->
     <div
       id="client-edit-modal"
       ref="client_edit_modal"
@@ -82,14 +82,14 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <mesha-modal-header>Editar serviço</mesha-modal-header>
+          <mesha-modal-header>Editar cliente</mesha-modal-header>
           <form @submit.prevent="update(forms.edit.body.id)">
             <mesha-clients-form :form="forms.edit"></mesha-clients-form>
           </form>
         </div>
       </div>
     </div>
-    <!-- Fim do modal de edição de serviço -->
+    <!-- Fim do modal de edição de cliente -->
   </div>
 </template>
 
@@ -136,11 +136,11 @@ export default {
       const response = await axios.get('api/v1/clients');
       this.clients = response.data;
     },
-    // Exibe modal de criação de serviço
+    // Exibe modal de criação de cliente
     create() {
       $(this.$refs.client_modal).modal('show');
     },
-    // Cria serviço
+    // Cria cliente
     async store() {
       try {
         this.forms.create.loading = true;
@@ -157,7 +157,7 @@ export default {
         this.forms.create.loading = false;
       }
     },
-    // Exibe modal de edição de serviço
+    // Exibe modal de edição de cliente
     edit(id) {
       const client = this.clients.data.find(function(client) {
         return client.id === id;
@@ -165,7 +165,7 @@ export default {
       this.forms.edit.body = Object.assign({}, client);
       $(this.$refs.client_edit_modal).modal('show');
     },
-    // Atualiza um serviço
+    // Atualiza um cliente
     async update(id) {
       try {
         this.forms.edit.loading = true;
@@ -182,9 +182,9 @@ export default {
         this.forms.edit.loading = false;
       }
     },
-    // Apaga um serviço
+    // Apaga um cliente
     async destroy(id) {
-      if (confirm('Tem certeza que deseja apagar o serviço?')) {
+      if (confirm('Tem certeza que deseja apagar o cliente?')) {
         const response = await axios.delete(`api/v1/clients/${id}`);
         this.index();
       }
