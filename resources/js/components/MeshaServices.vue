@@ -59,23 +59,7 @@
         <div class="modal-content">
           <mesha-modal-header>Cadastrar serviço</mesha-modal-header>
           <form @submit.prevent="store()">
-            <div class="modal-body">
-              <div class="form-group">
-                <label for="name" class="col-form-label">Nome</label>
-                <input
-                  required
-                  type="text"
-                  class="form-control"
-                  v-model="forms.create.body.name"
-                />
-                <mesha-form-errors
-                  :errors="forms.create.errors.name"
-                ></mesha-form-errors>
-              </div>
-            </div>
-            <mesha-modal-footer
-              :loading="forms.create.loading"
-            ></mesha-modal-footer>
+            <mesha-services-form :form="forms.create"></mesha-services-form>
           </form>
         </div>
       </div>
@@ -93,23 +77,7 @@
         <div class="modal-content">
           <mesha-modal-header>Editar serviço</mesha-modal-header>
           <form @submit.prevent="update(forms.edit.body.id)">
-            <div class="modal-body">
-              <div class="form-group">
-                <label for="name" class="col-form-label">Nome</label>
-                <input
-                  required
-                  type="text"
-                  class="form-control"
-                  v-model="forms.edit.body.name"
-                />
-                <mesha-form-errors
-                  :errors="forms.edit.errors.name"
-                ></mesha-form-errors>
-              </div>
-            </div>
-            <mesha-modal-footer
-              :loading="forms.edit.loading"
-            ></mesha-modal-footer>
+            <mesha-services-form :form="forms.edit"></mesha-services-form>
           </form>
         </div>
       </div>
