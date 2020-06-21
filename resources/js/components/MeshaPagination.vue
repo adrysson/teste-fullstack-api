@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="data.last_page > 1">
+  <nav class="pagination" v-if="data.last_page > 1">
     <ul class="pagination">
       <li
         aria-disabled="true"
@@ -51,6 +51,12 @@
     </ul>
   </nav>
 </template>
+
+<style>
+.pagination {
+  overflow: auto;
+}
+</style>
 
 <script>
 export default {
