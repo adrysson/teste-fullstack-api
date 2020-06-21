@@ -142,7 +142,7 @@ export default {
       services: {}
     };
   },
-  async created() {
+  created() {
     this.index();
   },
   methods: {

@@ -2343,47 +2343,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   created: function created() {
-    var _this = this;
-
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _this.index();
-
-            case 1:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }))();
+    this.index();
   },
   methods: {
     // Busca lista de serviços
     index: function index() {
-      var _this2 = this;
+      var _this = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context.prev = _context.next) {
               case 0:
-                _context2.next = 2;
+                _context.next = 2;
                 return axios.get('api/v1/services');
 
               case 2:
-                response = _context2.sent;
-                _this2.services = response.data;
+                response = _context.sent;
+                _this.services = response.data;
 
               case 4:
               case "end":
-                return _context2.stop();
+                return _context.stop();
             }
           }
-        }, _callee2);
+        }, _callee);
       }))();
     },
     // Exibe modal de criação de serviço
@@ -2392,45 +2377,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // Cria serviço
     store: function store() {
-      var _this3 = this;
+      var _this2 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                _context3.prev = 0;
-                _this3.forms.create.loading = true;
-                _this3.forms.create.errors = {};
-                _context3.next = 5;
-                return axios.post('api/v1/services', _this3.forms.create.body);
+                _context2.prev = 0;
+                _this2.forms.create.loading = true;
+                _this2.forms.create.errors = {};
+                _context2.next = 5;
+                return axios.post('api/v1/services', _this2.forms.create.body);
 
               case 5:
-                response = _context3.sent;
+                response = _context2.sent;
 
-                _this3.index();
+                _this2.index();
 
-                $(_this3.$refs.service_modal).modal('hide');
-                _context3.next = 13;
+                $(_this2.$refs.service_modal).modal('hide');
+                _context2.next = 13;
                 break;
 
               case 10:
-                _context3.prev = 10;
-                _context3.t0 = _context3["catch"](0);
-                _this3.forms.create.errors = _context3.t0.response.data.errors;
+                _context2.prev = 10;
+                _context2.t0 = _context2["catch"](0);
+                _this2.forms.create.errors = _context2.t0.response.data.errors;
 
               case 13:
-                _context3.prev = 13;
-                _this3.forms.create.loading = false;
-                return _context3.finish(13);
+                _context2.prev = 13;
+                _this2.forms.create.loading = false;
+                return _context2.finish(13);
 
               case 16:
               case "end":
-                return _context3.stop();
+                return _context2.stop();
             }
           }
-        }, _callee3, null, [[0, 10, 13, 16]]);
+        }, _callee2, null, [[0, 10, 13, 16]]);
       }))();
     },
     // Exibe modal de edição de serviço
@@ -2443,6 +2428,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // Atualiza um serviço
     update: function update(id) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _this3.forms.edit.loading = true;
+                _this3.forms.edit.errors = {};
+                _context3.next = 5;
+                return axios.put("api/v1/services/".concat(id), _this3.forms.edit.body);
+
+              case 5:
+                response = _context3.sent;
+
+                _this3.index();
+
+                $(_this3.$refs.service_edit_modal).modal('hide');
+                _context3.next = 13;
+                break;
+
+              case 10:
+                _context3.prev = 10;
+                _context3.t0 = _context3["catch"](0);
+                _this3.forms.edit.errors = _context3.t0.response.data.errors;
+
+              case 13:
+                _context3.prev = 13;
+                _this3.forms.edit.loading = false;
+                return _context3.finish(13);
+
+              case 16:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 10, 13, 16]]);
+      }))();
+    },
+    // Apaga um serviço
+    destroy: function destroy(id) {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
@@ -2451,68 +2479,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _context4.prev = 0;
-                _this4.forms.edit.loading = true;
-                _this4.forms.edit.errors = {};
-                _context4.next = 5;
-                return axios.put("api/v1/services/".concat(id), _this4.forms.edit.body);
+                if (!confirm('Tem certeza que deseja apagar o serviço?')) {
+                  _context4.next = 5;
+                  break;
+                }
 
-              case 5:
+                _context4.next = 3;
+                return axios["delete"]("api/v1/services/".concat(id));
+
+              case 3:
                 response = _context4.sent;
 
                 _this4.index();
 
-                $(_this4.$refs.service_edit_modal).modal('hide');
-                _context4.next = 13;
-                break;
-
-              case 10:
-                _context4.prev = 10;
-                _context4.t0 = _context4["catch"](0);
-                _this4.forms.edit.errors = _context4.t0.response.data.errors;
-
-              case 13:
-                _context4.prev = 13;
-                _this4.forms.edit.loading = false;
-                return _context4.finish(13);
-
-              case 16:
+              case 5:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 10, 13, 16]]);
-      }))();
-    },
-    // Apaga um serviço
-    destroy: function destroy(id) {
-      var _this5 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                if (!confirm('Tem certeza que deseja apagar o serviço?')) {
-                  _context5.next = 5;
-                  break;
-                }
-
-                _context5.next = 3;
-                return axios["delete"]("api/v1/services/".concat(id));
-
-              case 3:
-                response = _context5.sent;
-
-                _this5.index();
-
-              case 5:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
+        }, _callee4);
       }))();
     }
   }
