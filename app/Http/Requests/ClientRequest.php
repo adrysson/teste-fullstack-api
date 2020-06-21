@@ -27,7 +27,7 @@ class ClientRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'services' => $this->transformServices($this->services),
+            'services' => $this->transformServices($this->services_selected),
         ]);
     }
 

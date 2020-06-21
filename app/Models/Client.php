@@ -15,7 +15,7 @@ class Client extends Model
 
     protected $fillable = ['name', 'email', 'phone'];
 
-    protected $appends = ['services_list'];
+    protected $appends = ['services_selected'];
 
     /**
      * The attributes that should be cast to native types.
@@ -50,8 +50,13 @@ class Client extends Model
         return $this->belongsToMany(Service::class, 'clients_services');
     }
 
-    public function getServicesListAttribute()
+    public function getServicesSelectedAttribute()
     {
-        return implode(', ', array_column($this->services->toArray(), 'name'));
+        return $this->services->map(function ($service) {
+            return [
+                'code' => $service->id,
+                'label' => $service->name
+            ];
+        });
     }
 }

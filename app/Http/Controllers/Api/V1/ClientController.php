@@ -50,9 +50,11 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(ClientRequest $request, Client $client)
     {
-        //
+        $client->services()->sync($request->services);
+
+        return $client->update($request->only(['name', 'email', 'phone']));
     }
 
     /**

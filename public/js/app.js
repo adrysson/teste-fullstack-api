@@ -2025,10 +2025,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   directives: {
@@ -2043,7 +2039,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             name: '',
             email: '',
             phone: '',
-            services: []
+            services: [],
+            services_selected: []
           },
           errors: {}
         },
@@ -2053,7 +2050,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             id: '',
             email: '',
             phone: '',
-            services: []
+            services: [],
+            services_selected: []
           },
           errors: {}
         }
@@ -2322,11 +2320,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         });
         this.serviceOptions = serviceOptions;
       }
-    }
-  },
-  watch: {
-    'form.body.id': function formBodyId(value) {
-      console.log(value);
     }
   },
   created: function created() {
@@ -39935,14 +39928,6 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("td", { staticClass: "text-nowrap" }, [
-                      _vm._v(
-                        "\n              " +
-                          _vm._s(client.services_list) +
-                          "\n            "
-                      )
-                    ]),
-                    _vm._v(" "),
                     _c("td", { staticClass: "text-center" }, [
                       _c("div", { staticClass: "d-flex" }, [
                         _c(
@@ -40098,8 +40083,6 @@ var staticRenderFns = [
       _c("th", [_vm._v("Email")]),
       _vm._v(" "),
       _c("th", [_vm._v("Telefone")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Serviços")]),
       _vm._v(" "),
       _c("th", [_vm._v("Ações")])
     ])
@@ -40265,11 +40248,11 @@ var render = function() {
               attrs: { multiple: "", options: _vm.serviceOptions },
               on: { search: _vm.getServices },
               model: {
-                value: _vm.form.body.services,
+                value: _vm.form.body.services_selected,
                 callback: function($$v) {
-                  _vm.$set(_vm.form.body, "services", $$v)
+                  _vm.$set(_vm.form.body, "services_selected", $$v)
                 },
-                expression: "form.body.services"
+                expression: "form.body.services_selected"
               }
             }),
             _vm._v(" "),

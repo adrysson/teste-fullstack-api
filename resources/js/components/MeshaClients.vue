@@ -14,7 +14,6 @@
             <th>Nome</th>
             <th>Email</th>
             <th>Telefone</th>
-            <th>Serviços</th>
             <th>Ações</th>
           </thead>
           <tbody>
@@ -27,9 +26,6 @@
               </td>
               <td class="text-nowrap">
                 {{ client.phone }}
-              </td>
-              <td class="text-nowrap">
-                {{ client.services_list }}
               </td>
               <td class="text-center">
                 <div class="d-flex">
@@ -111,7 +107,8 @@ export default {
             name: '',
             email: '',
             phone: '',
-            services: []
+            services: [],
+            services_selected: []
           },
           errors: {}
         },
@@ -121,7 +118,8 @@ export default {
             id: '',
             email: '',
             phone: '',
-            services: []
+            services: [],
+            services_selected: []
           },
           errors: {}
         }

@@ -37,7 +37,7 @@
         <v-select
           multiple
           @search="getServices"
-          v-model="form.body.services"
+          v-model="form.body.services_selected"
           :options="serviceOptions"
         />
         <mesha-form-errors :errors="form.errors.services"></mesha-form-errors>
@@ -77,11 +77,6 @@ export default {
         });
         this.serviceOptions = serviceOptions;
       }
-    }
-  },
-  watch: {
-    'form.body.id': (value) => {
-      console.log(value)
     }
   },
   created() {
