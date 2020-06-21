@@ -7,10 +7,10 @@
     </h1>
     <hr>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
             <mesha-clients></mesha-clients>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
             <mesha-services></mesha-services>
         </div>
     </div>

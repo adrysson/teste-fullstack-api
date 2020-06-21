@@ -19,18 +19,41 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('mesha-clients', require('./components/MeshaClients.vue').default);
-Vue.component('mesha-services', require('./components/MeshaServices.vue').default);
-Vue.component('mesha-modal-header', require('./components/MeshaModalHeader.vue').default);
-Vue.component('mesha-modal-footer', require('./components/MeshaModalFooter.vue').default);
-Vue.component('mesha-form-errors', require('./components/MeshaFormErrors.vue').default);
-Vue.component('mesha-pagination', require('./components/MeshaPagination.vue').default);
+Vue.component(
+  'mesha-clients',
+  require('./components/MeshaClients.vue').default
+);
+Vue.component(
+  'mesha-services',
+  require('./components/MeshaServices.vue').default
+);
+Vue.component(
+  'mesha-modal-header',
+  require('./components/MeshaModalHeader.vue').default
+);
+Vue.component(
+  'mesha-modal-footer',
+  require('./components/MeshaModalFooter.vue').default
+);
+Vue.component(
+  'mesha-form-errors',
+  require('./components/MeshaFormErrors.vue').default
+);
+Vue.component(
+  'mesha-pagination',
+  require('./components/MeshaPagination.vue').default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import vSelect from 'vue-select';
+import 'vue-select/dist/vue-select.css';
+
+Vue.component('v-select', vSelect);
+
 const app = new Vue({
-    el: '#app',
+  el: '#app'
 });
