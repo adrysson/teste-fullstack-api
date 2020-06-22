@@ -2336,6 +2336,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     this.getServices();
   },
+  watch: {
+    'form.body': {
+      handler: function handler() {
+        this.getServices();
+      },
+      deep: true
+    }
+  },
   methods: {
     // Busca lista de serviços
     getServices: function getServices(search) {

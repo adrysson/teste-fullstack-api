@@ -82,6 +82,14 @@ export default {
   created() {
     this.getServices();
   },
+  watch: {
+    'form.body': {
+      handler: function() {
+        this.getServices();
+      },
+      deep: true
+    }
+  },
   methods: {
     // Busca lista de serviços
     async getServices(search) {
