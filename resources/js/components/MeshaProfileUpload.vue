@@ -24,10 +24,10 @@
     <div v-show="actionButtons">
       <div class="row">
         <div class="col-md-12 text-center mt-2">
-          <button class="btn btn-light" @click.prevent="launchFilePicker">
+          <a class="btn btn-light" @click.prevent="launchFilePicker">
             <i class="fas fa-mouse-pointer" style="padding-right: 3px"></i
             >Selecionar
-          </button>
+          </a>
           <button
             class="btn btn-outline-success"
             v-if="!avatar"

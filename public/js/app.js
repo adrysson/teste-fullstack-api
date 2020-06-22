@@ -43109,7 +43109,7 @@ var render = function() {
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-12 text-center mt-2" }, [
             _c(
-              "button",
+              "a",
               {
                 staticClass: "btn btn-light",
                 on: {
