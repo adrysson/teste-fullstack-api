@@ -5,8 +5,9 @@ namespace App\Imports;
 use App\Models\Contract;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
-class ContractsImport implements ToModel, WithHeadingRow
+class ContractsImport implements ToModel, WithHeadingRow, WithValidation
 {
     /**
     * @param array $row
@@ -20,5 +21,14 @@ class ContractsImport implements ToModel, WithHeadingRow
             'term' => date('Y-m-d', strtotime($row['entrega'])),
             'pages' => $row['paginas'],
         ]);
+    }
+
+    public function rules(): array
+    {
+        return [
+            'cliente' => ['required', 'string'],
+            'entrega' => ['required', 'date'],
+            'paginas' => ['required', 'integer'],
+        ];
     }
 }

@@ -8,6 +8,7 @@ use App\Imports\ContractsImport;
 use App\Models\Contract;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Validators\ValidationException;
 
 class ContractController extends Controller
 {
@@ -29,7 +30,11 @@ class ContractController extends Controller
      */
     public function store(ContractRequest $request)
     {
-        Excel::import(new ContractsImport, $request->file);
+        try {
+            Excel::import(new ContractsImport, $request->file);
+        } catch (ValidationException $e) {
+            return $e->failures();
+        }
     }
 
     /**

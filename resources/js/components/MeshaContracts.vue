@@ -84,7 +84,7 @@ export default {
           body: {
             file: ''
           },
-          errors: {}
+          errors: []
         }
       },
       contracts: {}
@@ -107,7 +107,7 @@ export default {
     async store() {
       try {
         this.forms.create.loading = true;
-        this.forms.create.errors = {};
+        this.forms.create.errors = [];
 
         let formData = new FormData();
 
@@ -122,7 +122,15 @@ export default {
         this.index();
         $(this.$refs.contract_modal).modal('hide');
       } catch (error) {
-        this.forms.create.errors = error.response.data.errors;
+        // Erros no envio do arquivo
+        if (error.response.data.errors.file) {
+          this.forms.create.errors = error.response.data.errors.file;
+        } else {
+          // Tratando erros de validação
+          this.forms.create.errors = error.response.data.errors.map(error => {
+            return error[0];
+          });
+        }
       } finally {
         this.forms.create.loading = false;
       }

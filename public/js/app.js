@@ -2486,7 +2486,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           body: {
             file: ''
           },
-          errors: {}
+          errors: []
         }
       },
       contracts: {}
@@ -2537,7 +2537,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _this2.forms.create.loading = true;
-                _this2.forms.create.errors = {};
+                _this2.forms.create.errors = [];
                 formData = new FormData();
                 formData.append('file', _this2.forms.create.body.file);
                 _context2.next = 7;
@@ -2559,7 +2559,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 12:
                 _context2.prev = 12;
                 _context2.t0 = _context2["catch"](0);
-                _this2.forms.create.errors = _context2.t0.response.data.errors;
+
+                // Erros no envio do arquivo
+                if (_context2.t0.response.data.errors.file) {
+                  _this2.forms.create.errors = _context2.t0.response.data.errors.file;
+                } else {
+                  // Tratando erros de validação
+                  _this2.forms.create.errors = _context2.t0.response.data.errors.map(function (error) {
+                    return error[0];
+                  });
+                }
 
               case 15:
                 _context2.prev = 15;
@@ -42727,7 +42736,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("mesha-form-errors", { attrs: { errors: _vm.form.errors.file } })
+            _c("mesha-form-errors", { attrs: { errors: _vm.form.errors } })
           ],
           1
         )

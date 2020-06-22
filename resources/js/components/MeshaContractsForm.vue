@@ -16,7 +16,7 @@
             >Escolha o arquivo</label
           >
         </div>
-        <mesha-form-errors :errors="form.errors.file"></mesha-form-errors>
+        <mesha-form-errors :errors="form.errors"></mesha-form-errors>
       </div>
     </div>
     <mesha-modal-footer :loading="form.loading"></mesha-modal-footer>
