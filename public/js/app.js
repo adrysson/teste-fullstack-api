@@ -2473,6 +2473,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   directives: {
@@ -42536,7 +42545,12 @@ var render = function() {
           "button",
           {
             staticClass: "btn btn-primary",
-            attrs: { type: "button" },
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              title:
+                "O arquivo deve conter os cabeçalhos: cliente(texto), entrega(data) e paginas(inteiro)"
+            },
             on: {
               click: function($event) {
                 return _vm.create()

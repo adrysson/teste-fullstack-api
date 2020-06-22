@@ -3,7 +3,13 @@
     <div class="card">
       <div class="card-header d-flex justify-content-between">
         <h5>Contratos</h5>
-        <button type="button" class="btn btn-primary" @click="create()">
+        <button
+          type="button"
+          data-toggle="tooltip"
+          title="O arquivo deve conter os cabeçalhos: cliente(texto), entrega(data) e paginas(inteiro)"
+          class="btn btn-primary"
+          @click="create()"
+        >
           Importar
         </button>
       </div>
@@ -72,6 +78,9 @@
 </template>
 
 <script>
+$(function() {
+  $('[data-toggle="tooltip"]').tooltip();
+});
 import { mask } from 'vue-the-mask';
 
 export default {
