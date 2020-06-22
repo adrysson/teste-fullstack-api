@@ -110,9 +110,6 @@ export default {
           // formData.append(fieldName, imageFile)
 
           // Emit FormData & image URL to the parent component
-          // this.$emit('input', {formData, imageURL})
-          // this.avatar = {formData, imageURL}
-          // this.setUpCroppie(this.avatar.imageURL)
           this.selected = true;
           this.setUpCroppie(imageURL);
         }
@@ -161,16 +158,12 @@ export default {
 };
 </script>
 <style>
-#avatar {
-  max-width: 100%;
-  border: 1px solid #919fa1;
-}
-
 .select-avatar-div {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   border: 1px solid #919fa1;
   background-color: #efeff0;
+  cursor: pointer;
 }
 </style>

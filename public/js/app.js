@@ -3018,9 +3018,6 @@ __webpack_require__.r(__webpack_exports__);
 
           var imageURL = URL.createObjectURL(imageFile); // formData.append(fieldName, imageFile)
           // Emit FormData & image URL to the parent component
-          // this.$emit('input', {formData, imageURL})
-          // this.avatar = {formData, imageURL}
-          // this.setUpCroppie(this.avatar.imageURL)
 
           this.selected = true;
           this.setUpCroppie(imageURL);
@@ -9589,7 +9586,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#avatar {\n  max-width: 100%;\n  border: 1px solid #919fa1;\n}\n.select-avatar-div {\n  width: 200px;\n  height: 200px;\n  border-radius: 50%;\n  border: 1px solid #919fa1;\n  background-color: #efeff0;\n}\n", ""]);
+exports.push([module.i, "\n.select-avatar-div {\n  width: 200px;\n  height: 200px;\n  border-radius: 50%;\n  border: 1px solid #919fa1;\n  background-color: #efeff0;\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 
