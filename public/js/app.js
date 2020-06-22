@@ -2090,6 +2090,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // Exibe modal de criação de cliente
     create: function create() {
+      this.forms.create = {
+        loading: false,
+        body: {
+          name: '',
+          email: '',
+          phone: '',
+          services: [],
+          services_selected: []
+        },
+        errors: {}
+      };
       $(this.$refs.client_modal).modal('show');
     },
     // Cria cliente
@@ -3216,6 +3227,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // Exibe modal de criação de serviço
     create: function create() {
+      this.forms.create = {
+        loading: false,
+        body: {
+          name: ''
+        },
+        errors: {}
+      };
       $(this.$refs.service_modal).modal('show');
     },
     // Cria serviço

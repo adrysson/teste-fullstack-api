@@ -118,6 +118,13 @@ export default {
     },
     // Exibe modal de criação de serviço
     create() {
+      this.forms.create = {
+        loading: false,
+        body: {
+          name: ''
+        },
+        errors: {}
+      };
       $(this.$refs.service_modal).modal('show');
     },
     // Cria serviço

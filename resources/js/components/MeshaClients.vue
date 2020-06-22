@@ -138,6 +138,17 @@ export default {
     },
     // Exibe modal de criação de cliente
     create() {
+      this.forms.create = {
+        loading: false,
+        body: {
+          name: '',
+          email: '',
+          phone: '',
+          services: [],
+          services_selected: []
+        },
+        errors: {}
+      };
       $(this.$refs.client_modal).modal('show');
     },
     // Cria cliente

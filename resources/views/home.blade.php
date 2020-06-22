@@ -14,6 +14,7 @@
             <mesha-services></mesha-services>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-md-6">
             <mesha-contracts></mesha-contracts>
