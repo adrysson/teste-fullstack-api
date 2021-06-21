@@ -1,5 +1,5 @@
 # teste-fullstack
-Repositório usado para a avaliação técnica da Mesha Tecnologia.
+Repositório usado para uma avaliação técnica.
 
 ## Instruções de instalação
 O projeto foi desenvolvido com docker, então basta ter o docker e o docker-compose instalado para conseguir rodar o projeto.
